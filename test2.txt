@@ -8,7 +8,6 @@ intreg main()
     intreg a:=3;
     intreg b:=1;
     b:=b+1;
-    c:=c+2;
     a:=x*3+5;
     caracter g:='a';
     bolean ok := adevarat;
