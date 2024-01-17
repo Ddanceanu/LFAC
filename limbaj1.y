@@ -228,7 +228,12 @@ expr: value
     char* b_type;
     a_type = TypeOf($1);
     b_type = TypeOf($3);
-    if (strcmp(a_type, b_type) == 0)
+    if ((strcmp(a_type, "CONST INT") == 0) || strcmp(b_type, "CONST INT") == 0)
+        {
+            printf("Este interzisa folosirea operatiilor cu constante.\n");
+            valid = 0;
+    }
+    if ((strcmp(a_type, b_type) == 0))
         {
             int val_a = atoi(a);
             int val_b = atoi(b);
@@ -236,7 +241,7 @@ expr: value
             char temp[40]; 
             sprintf(temp, "%d", sum);
             strcpy(val, temp);
-            value_returned($1, count, val);
+            if(valid == 1)value_returned($1, count, val);
             // cout << "p: " << a << " " << a << endl;
             // cout << "\ntest: " << val << "\n";
         }
@@ -278,6 +283,12 @@ expr: value
     char* b_type;
     a_type = TypeOf($1);
     b_type = TypeOf($3);
+    //printf("%s\n", a_type);
+    if ((strcmp(a_type, "CONST INT") == 0) || strcmp(b_type, "CONST INT") == 0)
+        {
+            printf("Este interzisa folosirea operatiilor cu constante.");
+            valid = 0;
+        }
     if (strcmp(a_type, b_type) == 0)
         {
             int val_a = atoi(a);
